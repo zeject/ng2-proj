@@ -13,7 +13,8 @@ import { HeroDetailComponent } from '../detail/hero-detail.component'
 	styleUrls: ['./app/index/heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-
+	error: any;
+	addingHero = false;
 	heroes : Hero[];
 
 	title = 'Tour of Heores';
@@ -28,6 +29,27 @@ export class HeroesComponent implements OnInit {
 
 	onSlect(hero: Hero) {
 		this.selectedHero = hero;
+	}
+
+	addHero() {
+	  this.addingHero = true;
+	  this.selectedHero = null;
+	}
+
+	close(savedHero: Hero) {
+	  this.addingHero = false;
+	  if (savedHero) { this.getHeroes(); }
+	}
+
+	deleteHero(hero: Hero, event: any) {
+	  event.stopPropagation();
+	  this.heroService
+	      .delete(hero)
+	      .then(res => {
+	        this.heroes = this.heroes.filter(h => h !== hero);
+	        if (this.selectedHero === hero) { this.selectedHero = null; }
+	      })
+	      .catch(error => this.error = error);
 	}
 
 	gotoDetail() {
