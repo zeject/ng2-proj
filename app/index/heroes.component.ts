@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input,
+  trigger,
+  state,
+  style,
+  transition,
+  animate } from '@angular/core';
 import { Router } from '@angular/router'
 
 import { Hero } from '../bean/hero';
@@ -10,7 +15,21 @@ import { HeroDetailComponent } from '../detail/hero-detail.component'
 	selector: 'my-heroes',
 	templateUrl: './app/index/heroes.component.html',
 	directives: [HeroDetailComponent],
-	styleUrls: ['./app/index/heroes.component.css']
+	styleUrls: ['./app/index/heroes.component.css'],
+	animations: [
+    trigger('heroState', [
+      state('inactive', style({
+        backgroundColor: '#eee',
+        transform: 'scale(1)'
+      })),
+      state('active',   style({
+        backgroundColor: '#cfd8dc',
+        transform: 'scale(1.1)'
+      })),
+      transition('inactive => active', animate('100ms ease-in')),
+      transition('active => inactive', animate('100ms ease-out'))
+    ])
+  ]
 })
 export class HeroesComponent implements OnInit {
 	error: any;
@@ -28,6 +47,7 @@ export class HeroesComponent implements OnInit {
 	}
 
 	onSlect(hero: Hero) {
+		hero.state = (hero.state === 'active' ? 'inactive' : 'active');
 		this.selectedHero = hero;
 	}
 
