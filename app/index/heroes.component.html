@@ -1,3 +1,9 @@
+<input type="text" class="form-control" required
+  [(ngModel)]="name"
+  name="name"  #spy >
+<br>TODO: remove this: {{spy.className}}
+
+
 <h2>my heroes</h2>
 <ul class="heroes">
 	<li [class.selected]="hero === selectedHero" *ngFor="let hero of heroes" (click)="onSlect(hero)">
