@@ -23,6 +23,7 @@ var HeroesComponent = (function () {
         this.getHeroes();
     };
     HeroesComponent.prototype.onSlect = function (hero) {
+        hero.state = (hero.state === 'active' ? 'inactive' : 'active');
         this.selectedHero = hero;
     };
     HeroesComponent.prototype.addHero = function () {
@@ -62,7 +63,21 @@ var HeroesComponent = (function () {
             selector: 'my-heroes',
             templateUrl: './app/index/heroes.component.html',
             directives: [hero_detail_component_1.HeroDetailComponent],
-            styleUrls: ['./app/index/heroes.component.css']
+            styleUrls: ['./app/index/heroes.component.css'],
+            animations: [
+                core_1.trigger('heroState', [
+                    core_1.state('inactive', core_1.style({
+                        backgroundColor: '#eee',
+                        transform: 'scale(1)'
+                    })),
+                    core_1.state('active', core_1.style({
+                        backgroundColor: '#cfd8dc',
+                        transform: 'scale(1.1)'
+                    })),
+                    core_1.transition('inactive => active', core_1.animate('100ms ease-in')),
+                    core_1.transition('active => inactive', core_1.animate('100ms ease-out'))
+                ])
+            ]
         }), 
         __metadata('design:paramtypes', [router_1.Router, hero_service_1.HeroService])
     ], HeroesComponent);

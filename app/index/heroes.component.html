@@ -6,7 +6,10 @@
 
 <h2>my heroes</h2>
 <ul class="heroes">
-	<li [class.selected]="hero === selectedHero" *ngFor="let hero of heroes" (click)="onSlect(hero)">
+	<li [class.selected]="hero === selectedHero" 
+    @heroState="hero.state"
+    *ngFor="let hero of heroes" 
+    (click)="onSlect(hero)">
 		<span class="badge">{{hero.id}}</span>
 		{{hero.name}}
 		<button class="delete-button" (click)="deleteHero(hero, $event)">Delete</button>
