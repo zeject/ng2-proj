@@ -11,11 +11,11 @@ import { HeroService } from '../service/hero.service'
 import { HeroDetailComponent } from '../detail/hero-detail.component'
 
 @Component({
-	//moduleId: module.id,
+	moduleId: module.id,
 	selector: 'my-heroes',
-	templateUrl: './app/index/heroes.component.html',
+	templateUrl: './heroes.component.html',
 	directives: [HeroDetailComponent],
-	styleUrls: ['./app/index/heroes.component.css'],
+	styleUrls: ['./heroes.component.css'],
 	animations: [
     trigger('heroState', [
       state('inactive', style({

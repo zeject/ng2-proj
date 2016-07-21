@@ -59,11 +59,11 @@ var HeroesComponent = (function () {
     };
     HeroesComponent = __decorate([
         core_1.Component({
-            //moduleId: module.id,
+            moduleId: module.id,
             selector: 'my-heroes',
-            templateUrl: './app/index/heroes.component.html',
+            templateUrl: './heroes.component.html',
             directives: [hero_detail_component_1.HeroDetailComponent],
-            styleUrls: ['./app/index/heroes.component.css'],
+            styleUrls: ['./heroes.component.css'],
             animations: [
                 core_1.trigger('heroState', [
                     core_1.state('inactive', core_1.style({
