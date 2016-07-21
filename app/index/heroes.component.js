@@ -23,7 +23,7 @@ var HeroesComponent = (function () {
         this.getHeroes();
     };
     HeroesComponent.prototype.onSlect = function (hero) {
-        hero.state = (hero.state === 'active' ? 'inactive' : 'active');
+        // hero.state = (hero.state === 'active' ? 'inactive' : 'active');
         this.selectedHero = hero;
     };
     HeroesComponent.prototype.addHero = function () {

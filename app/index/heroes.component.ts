@@ -47,7 +47,7 @@ export class HeroesComponent implements OnInit {
 	}
 
 	onSlect(hero: Hero) {
-		hero.state = (hero.state === 'active' ? 'inactive' : 'active');
+		// hero.state = (hero.state === 'active' ? 'inactive' : 'active');
 		this.selectedHero = hero;
 	}
 
